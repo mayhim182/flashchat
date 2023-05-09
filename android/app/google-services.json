@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "54033579801",
+    "project_id": "flash-chatting-app-706ac",
+    "storage_bucket": "flash-chatting-app-706ac.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:54033579801:android:99214966e6ec849e258f88",
+        "android_client_info": {
+          "package_name": "com.mayhim182.com.flashchatingapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "54033579801-g1ub8c00512hfu3ali49t3gb97rdv9tq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBAXxa8KZTBGkFD2p_wvK6zk202apHJgXg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "54033579801-g1ub8c00512hfu3ali49t3gb97rdv9tq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
