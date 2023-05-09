@@ -1,42 +1,41 @@
 import 'package:flashchatingapp/screens/registration_screen.dart';
 import 'package:flutter/material.dart';
+import '../components/rounded_button.dart';
 import 'login_screen.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
+
 
 class WelcomeScreen extends StatefulWidget {
   // const WelcomeScreen({Key? key}) : super(key: key);
 
-  static String id='welcome_screen';
+  static String id = 'welcome_screen';
 
   @override
   State<WelcomeScreen> createState() => _WelcomeScreenState();
 }
 
-class _WelcomeScreenState extends State<WelcomeScreen> with SingleTickerProviderStateMixin{
-
+class _WelcomeScreenState extends State<WelcomeScreen>
+    with SingleTickerProviderStateMixin {
   late AnimationController controller;
   late Animation animation;
 
   @override
-  void initState(){
+  void initState() {
     super.initState();
-    controller=AnimationController(
-        duration: Duration(seconds: 1),
-        vsync:this,
+    controller = AnimationController(
+      duration: Duration(seconds: 1),
+      vsync: this,
     );
 
-    animation=ColorTween(begin: Colors.blueGrey, end: Colors.white).animate(controller);
+    animation = ColorTween(begin: Colors.blueGrey, end: Colors.white)
+        .animate(controller);
 
     controller.forward();
 
     controller.addListener(() {
-      setState(() {
-
-      });
-      print(animation.value);
+      setState(() {});
     });
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -58,18 +57,14 @@ class _WelcomeScreenState extends State<WelcomeScreen> with SingleTickerProvider
                   ),
                 ),
                 AnimatedTextKit(
-                    animatedTexts: [
-                      TypewriterAnimatedText(
-                        'Flash Chat',
+                  animatedTexts: [
+                    TypewriterAnimatedText('Flash Chat',
                         textStyle: const TextStyle(
-                          fontSize: 32.0,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.blueGrey
-                        ),
-                        speed: const Duration(milliseconds: 200)
-                      )
-                    ],
-                  totalRepeatCount: 4,
+                            fontSize: 32.0,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.blueGrey),
+                        speed: const Duration(milliseconds: 200))
+                  ],
                   pause: const Duration(milliseconds: 100),
                 )
               ],
@@ -77,44 +72,15 @@ class _WelcomeScreenState extends State<WelcomeScreen> with SingleTickerProvider
             SizedBox(
               height: 28.0,
             ),
-            Padding(
-              padding: EdgeInsets.symmetric(vertical: 16.0),
-              child: Material(
-                elevation: 5.0,
-                color: Colors.lightBlueAccent,
-                borderRadius: BorderRadius.circular(30.0),
-                child: MaterialButton(
-                  onPressed: () {
-                    //Go to login screen
-                    Navigator.pushNamed(context, LoginScreen.id);
-                  },
-                  minWidth: 200.0,
-                  height: 42.0,
-                  child: Text('Login'),
-                ),
-              ),
-            ),
+            RoundedButton(Colors.lightBlueAccent,'login',(){
+              Navigator.pushNamed(context, LoginScreen.id);
+            }),
             SizedBox(
               height: 10.0,
             ),
-            Padding(
-              padding: EdgeInsets.symmetric(vertical: 16.0),
-              child: Material(
-                elevation: 5.0,
-                color: Colors.lightBlueAccent,
-                borderRadius: BorderRadius.circular(30.0),
-                child: MaterialButton(
-                  onPressed: () {
-                    //Go to registration screen
-                    Navigator.pushNamed(context, RegistrationScreen.id);
-                  },
-                  minWidth: 200.0,
-                  height: 42.0,
-                  child: Text('Register'),
-                ),
-              ),
-            ),
-
+            RoundedButton(Colors.lightBlueAccent, '_Register', () {
+              Navigator.pushNamed(context, RegistrationScreen.id);
+            }),
           ],
         ),
       ),
