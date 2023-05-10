@@ -1,5 +1,9 @@
+import 'package:firebase_core/firebase_core.dart';
+import 'package:flashchatingapp/components/rounded_button.dart';
 import 'package:flashchatingapp/constants.dart';
+import 'package:flashchatingapp/screens/chat_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class RegistrationScreen extends StatefulWidget {
   // const RegistrationScreen({Key? key}) : super(key: key);
@@ -10,6 +14,11 @@ class RegistrationScreen extends StatefulWidget {
 }
 
 class _RegistrationScreenState extends State<RegistrationScreen> {
+
+  final _auth = FirebaseAuth.instance;
+  late String email;
+  late String password;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -31,8 +40,11 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
               height: 48.0,
             ),
             TextField(
+              keyboardType: TextInputType.emailAddress,
+              textAlign: TextAlign.center,
               onChanged: (value) {
                 // Do something with the user input
+                email = value;
               },
               decoration:
                   kTextFieldDecoration.copyWith(hintText: 'Enter your email'),
@@ -41,8 +53,11 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
               height: 8.0,
             ),
             TextField(
+              obscureText: true,
+              textAlign: TextAlign.center,
               onChanged: (value) {
 //Do something with the userInput
+                password = value;
               },
               decoration:
                   kTextFieldDecoration.copyWith(hintText: 'Enter the password'),
@@ -50,25 +65,19 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
             SizedBox(
               height: 24.0,
             ),
-            Padding(
-              padding: EdgeInsets.symmetric(vertical: 16.0),
-              child: Material(
-                color: Colors.blueAccent,
-                borderRadius: BorderRadius.all(Radius.circular(30.0)),
-                elevation: 5.0,
-                child: MaterialButton(
-                  onPressed: () {
-                    //Implement registration functionality
-                  },
-                  minWidth: 200.0,
-                  height: 42.0,
-                  child: Text(
-                    'register',
-                    style: TextStyle(color: Colors.white),
-                  ),
-                ),
-              ),
-            ),
+            RoundedButton(Colors.blueAccent, 'Register', () async{
+              // print(email);
+              // print(password);
+              try {
+                final newUser= await _auth.createUserWithEmailAndPassword(email: email, password: password);
+                if(newUser!=null){
+                  Navigator.pushNamed(context, ChatScreen.id);
+                }
+              }
+              catch(e){
+                print(e);
+              }
+            }),
           ],
         ),
       ),
