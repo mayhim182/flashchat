@@ -25,7 +25,6 @@ class _ChatScreenState extends State<ChatScreen> {
 
   void getCurrentUser() async{
     try {
-      await Firebase.initializeApp();
       final user = await _auth.currentUser;
       if (user != null) {
         loggedInUser = user;
