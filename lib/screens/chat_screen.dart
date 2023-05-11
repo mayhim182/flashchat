@@ -1,4 +1,5 @@
 import 'package:firebase_core/firebase_core.dart';
+import 'package:flashchatingapp/screens/login_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flashchatingapp/constants.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -46,8 +47,10 @@ class _ChatScreenState extends State<ChatScreen> {
           IconButton(
               onPressed: () {
                 // Implement the logout functionality here
+                _auth.signOut();
+                Navigator.pop(context);
               },
-              icon: Icon(Icons.close))
+              icon: Icon(Icons.logout))
         ],
         title: Text('⚡️Chat'),
         backgroundColor: Colors.lightBlueAccent,
