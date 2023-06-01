@@ -1,12 +1,17 @@
 # flashchatingapp
 
-To use the app clone the repository <Link>
+To use the app clone this repository by going to cmd prompt in the directory of your choice
+and write
+```bash
+  git clone <url>
+```
+open the project in android studio open terminal and run 
 
-open in android studio.
-  
-  Run flutter pub get in the terminal 
-  
-  run the app register and login then you are good to go.
+```bash
+  flutter pub get
+```
+connect your phone and turn on usb debugging on your device,
+or use the android emulator just run the project build and enjoy!
   
   
   
